@@ -9,4 +9,5 @@ class fighter_basic extends unit {
   }
 }
 window.unit_types.fighter_basic = fighter_basic;
+creation.creator(fighter_basic, "structure_base");
 unit_loaded();
