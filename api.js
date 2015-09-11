@@ -55,7 +55,7 @@ make_api.prototype.sendall = function (data) {
         this.messages[message] = JSON.stringify(this.messages[message]);
         this.ws.send(this.messages[message]);
       }
-      this.messages.pop()
+      this.messages = this.messages.slice(1);
     }
   }
 }
