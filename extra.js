@@ -62,10 +62,16 @@ class make_extra {
     }
     return false;
   }
-  clone(obj) {
-    var copy = obj.constructor();
+  clone(obj, copy) {
+    if (typeof copy === "undefined") {
+      copy = obj.constructor();
+    }
     for (var attr in obj) {
-      if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
+      if (typeof obj[attr] === "object") {
+        copy[attr] = this.clone(obj[attr]);
+      } else {
+        copy[attr] = obj[attr];
+      }
     }
     return copy;
   }

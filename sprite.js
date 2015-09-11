@@ -28,7 +28,12 @@ class sprite {
     this.selected = false;
     // Set all the other options
     for (var prop in options) {
-      this[prop] = options[prop];
+      // For deep cloning things like stats and stats.dests
+      if (typeof this[prop] === "object" && typeof options[prop] === "object") {
+        this[prop] = extra.clone(options[prop], this[prop]);
+      } else {
+        this[prop] = options[prop];
+      }
     }
   }
   key_down(event) {
