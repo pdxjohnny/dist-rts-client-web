@@ -210,8 +210,12 @@ class sprite {
     if (typeof is_selected !== "undefined") {
       this.selected = is_selected;
     }
-    if (typeof this.on_select === "function") {
+    if (typeof this.on_select === "function" &&
+      this.selected) {
       this.on_select();
+    } else if (typeof this.un_select === "function" &&
+      !this.selected) {
+      this.un_select();
     }
     return this.selected;
   }
