@@ -47,12 +47,11 @@ class player {
   create_unit(name, type, options) {
     name = this.Id + "_" + name;
     if (typeof options === "undefined") {
-      options = {
-        game: this.game,
-        player: this,
-      };
+      options = {};
     }
     options["name"] = name;
+    options["game"] = this.game;
+    options["player"] = this;
     var add = new(window.unit_types[type])(options);
     return this.add_unit(add);
   }

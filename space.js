@@ -78,11 +78,10 @@ space.prototype.add_unit = function (add) {
 
 space.prototype.create_unit = function (name, type, options) {
   if (typeof options === "undefined") {
-    options = {
-      game: this,
-    };
+    options = {};
   }
   options["name"] = name;
+  options["game"] = this;
   var add = new(window.unit_types[type])(options);
   return this.add_unit(add);
 }
