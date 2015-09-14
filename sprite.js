@@ -166,8 +166,7 @@ class sprite {
       else if (39 in this.stats.keys_down || 68 in this.stats.keys_down) {
         return 360;
       }
-    } else if (Object.keys(this.stats.dest).length > 0 &&
-      this.angle_to_dest != false) {
+    } else if (Object.keys(this.stats.dest).length > 0) {
       var check_cords = {
         x: this.stats.x,
         y: this.stats.y,
@@ -177,6 +176,7 @@ class sprite {
       if (extra.on_cords(this.stats.dest, check_cords)) {
         this.at_dest();
       }
+      this.set_angle();
       return this.angle_to_dest;
     }
     return false;

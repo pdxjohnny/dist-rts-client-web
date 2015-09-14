@@ -28,7 +28,7 @@ class Option {
     Object.defineProperty(div, "title", {
       set: function (name) {
         this.title_name = name;
-        this.title_div.innerHTML = name
+        this.title_div.innerHTML = Option.prototype.format_title(name);
         return this.title_div;
       },
       get: function (name) {
@@ -66,5 +66,12 @@ class Option {
     for (var prop in object) {
       this[prop.toLowerCase()] = object[prop];
     }
+  }
+  format_title(title) {
+    title = title.split("_");
+    for (var i = 0; i < title.length; i++) {
+      title[i] = title[i].charAt(0).toUpperCase() + title[i].slice(1);
+    }
+    return title.join(" ");
   }
 }

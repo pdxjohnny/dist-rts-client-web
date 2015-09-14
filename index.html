@@ -55,6 +55,9 @@ Author: John Andersen
 	<script src="sprite.js" ></script>
 	<script src="stars.js" ></script>
 	<script src="space.js" ></script>
+
+	<script src="api/storage.js" ></script>
+
 	<script src="rts/creation.js" ></script>
 	<script src="rts/controllable.js" ></script>
 	<script src="rts/unit.js" ></script>
@@ -88,7 +91,6 @@ Author: John Andersen
 </html>
 <script>
 main_game = new space("game_canvas");
-main_game.api_setup();
 main_game.start();
 
 document.getElementById('playername').value += Math.floor((Math.random() * 100) + 1);

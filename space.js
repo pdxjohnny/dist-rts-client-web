@@ -16,6 +16,8 @@ var space = function space(canvas_div_id) {
   this.back['background'] = new space_background(this);
   this.back['background'].color = '#0B173B';
   this.back['stars'] = new star_field(this);
+  // Setup api
+  this.api_setup();
   return this;
 }
 
@@ -25,6 +27,13 @@ space.prototype.constructor = space;
 space.prototype.api_setup = function () {
   api.startsender();
   api.Update = this.Update.bind(this);
+  // Options for api handlers
+  var api_options = {
+    api: api,
+    game: this,
+  };
+  // The specialized api handlers
+  this.ApiStorage = new ApiStorage(api_options);
 }
 
 space.prototype.stop = function () {
@@ -66,7 +75,7 @@ space.prototype.start_player = function (name) {
   if (window.units_loaded) {
     create_and_spawn();
   } else {
-    window.on_units_loaded = create_and_spawn;
+    window.on_units_loaded.push(create_and_spawn);
   }
 }
 

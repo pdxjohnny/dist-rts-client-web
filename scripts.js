@@ -1,14 +1,14 @@
 window.unit_types = {};
 window.have_scripts = 0;
 window.units_loaded = false;
-window.on_units_loaded = false;
+window.on_units_loaded = [];
 
 function unit_loaded() {
   have_scripts++;
   if (have_scripts >= scripts.length) {
     window.units_loaded = true;
-    if (typeof window.on_units_loaded === "function") {
-      window.on_units_loaded();
+    for (var i = 0; i < window.on_units_loaded.length; i++) {
+      window.on_units_loaded[i]();
     }
     console.log("All units loaded");
   }
